@@ -18,6 +18,7 @@ namespace lesson_2_4
 
         static void Main(string[] args)
         {
+            // Использование битовых маск
             Week office1 = (Week)0b_0011111;
             Week office2 = (Week)0b_0101010;
             Console.WriteLine("График работы первого офиса:");
