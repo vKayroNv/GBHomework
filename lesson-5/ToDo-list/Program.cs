@@ -9,11 +9,12 @@ namespace ToDo_list
 {
     class Program
     {
-        static List<ToDo> todoList = new List<ToDo>();
+        static ToDoList toDoList = new ToDoList();
         const string filename = "tasks.json";
         static JsonSerializerOptions options = new JsonSerializerOptions
         {
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic)
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+            WriteIndented = true
         };
 
         static void Main(string[] args)
@@ -21,28 +22,28 @@ namespace ToDo_list
             while (true)
             {
                 Console.Clear();
-                todoList.Clear();
 
                 CheckTasks();
                 CreateMenu();
 
                 string input = Console.ReadLine();
 
-                if (input[0] == '+')
-                    CreateTask(input.Remove(0, 1));
-                else if (input[0] == '-')
-                    ClearTasks();
-                else if (input[0] == '~')
-                    break;
-                else try
-                    {
+                try
+                {
+                    if (input[0] == '+')
+                        CreateTask(input.Remove(0, 1));
+                    else if (input[0] == '-')
+                        ClearTasks();
+                    else if (input[0] == '~')
+                        break;
+                    else
                         ChangeIsDone(int.Parse(input));
-                    }
-                    catch (Exception)
-                    {
-                        Console.Write("\nНеверный ввод.\nДля продолжения нажмите любую клавишу...");
-                        Console.ReadKey(true);
-                    }
+                }
+                catch (Exception)
+                {
+                    Console.Write("\nНеверный ввод.\nДля продолжения нажмите любую клавишу...");
+                    Console.ReadKey(true);
+                }
 
                 SaveFile();
             }
@@ -51,27 +52,22 @@ namespace ToDo_list
         static void CheckTasks()
         {
 
-            if (!File.Exists(filename)) 
+            if (!File.Exists(filename))
                 Console.WriteLine("В данный момент никаких задач нет.");
             else
             {
-                var fs = File.OpenRead(filename);
-                if (fs.Length == 0)
+                using (StreamReader sr = new StreamReader(filename))
+                    toDoList = JsonSerializer.Deserialize<ToDoList>(sr.ReadToEnd(), options);
+
+                if (toDoList.Tasks.Count == 0)
                     Console.WriteLine("В данный момент никаких задач нет.");
-                else
-                {
-                    using (StreamReader sr = new StreamReader(filename))
-                        while (!sr.EndOfStream)
-                            todoList.Add(JsonSerializer.Deserialize<ToDo>(sr.ReadLine(), options));
-                    for (int i = 0; i < todoList.Count; i++)
+                else for (int i = 0; i < toDoList.Tasks.Count; i++)
                     {
                         Console.Write($"{i + 1}. ");
-                        if (todoList[i].IsDone)
+                        if (toDoList.Tasks[i].IsDone)
                             Console.Write("[X] ");
-                        Console.WriteLine(todoList[i].Title);
+                        Console.WriteLine(toDoList.Tasks[i].Title);
                     }
-                }
-                fs.Close();
             }
         }
 
@@ -87,30 +83,29 @@ namespace ToDo_list
 
         static void CreateTask(string input)
         {
-            todoList.Add(new ToDo(input));
+            toDoList.Tasks.Add(new ToDo(input));
         }
 
         static void ClearTasks()
         {
-            for (int i = todoList.Count - 1; i >= 0; i--)
-                if (todoList[i].IsDone)
-                    todoList.RemoveAt(i);
+            for (int i = toDoList.Tasks.Count - 1; i >= 0; i--)
+                if (toDoList.Tasks[i].IsDone)
+                    toDoList.Tasks.RemoveAt(i);
         }
 
         static void ChangeIsDone(int i)
         {
-            if (todoList[i - 1].IsDone)
-                todoList[i - 1].IsDone = false;
+            if (toDoList.Tasks[i - 1].IsDone)
+                toDoList.Tasks[i - 1].IsDone = false;
             else
-                todoList[i - 1].IsDone = true;
+                toDoList.Tasks[i - 1].IsDone = true;
         }
 
         static void SaveFile()
         {
             using (StreamWriter sw = new StreamWriter(filename))
             {
-                foreach (ToDo todo in todoList)
-                    sw.WriteLine(JsonSerializer.Serialize<ToDo>(todo, options));
+                sw.WriteLine(JsonSerializer.Serialize<ToDoList>(toDoList, options));
                 sw.Close();
             }
         }
@@ -127,6 +122,16 @@ namespace ToDo_list
         {
             Title = text;
             IsDone = false;
+        }
+    }
+
+    class ToDoList
+    {
+        public List<ToDo> Tasks { get; set; }
+
+        public ToDoList()
+        {
+            Tasks = new List<ToDo>();
         }
     }
 }

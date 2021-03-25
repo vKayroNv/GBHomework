@@ -7,7 +7,7 @@ namespace lesson_5_1
     {
         static void Main(string[] args)
         {
-            // Сохрание данных в файл
+            // Сохранение данных в файл
             Console.WriteLine("Введите информацию:");
             string text = Console.ReadLine();
             Console.WriteLine("Введите название файла:");
