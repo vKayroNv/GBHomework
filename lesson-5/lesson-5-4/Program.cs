@@ -16,11 +16,8 @@ namespace lesson_5_4
 
             GetDirectories(path);
 
-            using (StreamWriter sw = new StreamWriter("paths.txt"))
-                foreach (string s in paths)
-                    sw.WriteLine(s);
-
-            Console.WriteLine("Дерево каталогов и файлов для заданного пути сохранены");
+            foreach (string s in paths)
+                Console.WriteLine(s);
 
             Console.ReadLine();
         }
