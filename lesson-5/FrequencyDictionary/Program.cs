@@ -36,7 +36,6 @@ namespace FrequencyDictionary
             SaveOutput();
 
             Console.WriteLine("Готово");
-            Console.ReadLine();
         }
 
         static void SaveOutput()

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace lesson_5_4
 {
@@ -28,7 +27,6 @@ namespace lesson_5_4
             foreach (string s in Directory.GetDirectories(path))
             {
                 paths.Add(s);
-                GetFiles(s);
                 GetDirectories(s);
             }
         }

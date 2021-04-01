@@ -55,6 +55,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDo-list", "lesson-5\ToDo-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrequencyDictionary", "lesson-5\FrequencyDictionary\FrequencyDictionary.csproj", "{5E0185A1-5FBD-4920-8944-2FC66F286789}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lesson-6", "lesson-6", "{8D616A49-3E15-4BB5-B981-3DCB17D0C8C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task Manager", "lesson-6\Task Manager\Task Manager.csproj", "{50FDC040-BC64-48C2-B216-75B2ADA172FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +153,10 @@ Global
 		{5E0185A1-5FBD-4920-8944-2FC66F286789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E0185A1-5FBD-4920-8944-2FC66F286789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0185A1-5FBD-4920-8944-2FC66F286789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FDC040-BC64-48C2-B216-75B2ADA172FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FDC040-BC64-48C2-B216-75B2ADA172FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FDC040-BC64-48C2-B216-75B2ADA172FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FDC040-BC64-48C2-B216-75B2ADA172FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -175,6 +183,7 @@ Global
 		{67FAF4EA-20CD-4FEF-BF69-2D14B3AB591F} = {4449F480-D9DE-4F4F-B5BD-9F23C0FB92B4}
 		{B766EBB6-78BD-481F-A03F-799C6E166FB1} = {4449F480-D9DE-4F4F-B5BD-9F23C0FB92B4}
 		{5E0185A1-5FBD-4920-8944-2FC66F286789} = {4449F480-D9DE-4F4F-B5BD-9F23C0FB92B4}
+		{50FDC040-BC64-48C2-B216-75B2ADA172FB} = {8D616A49-3E15-4BB5-B981-3DCB17D0C8C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8BFA173-8B09-4404-9EEB-2C33160655B5}

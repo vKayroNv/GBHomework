@@ -12,7 +12,7 @@ namespace lesson_5_3
             Console.WriteLine("Введите числа (от 0 до 255) через пробел:");
             byte[] array = Console.ReadLine().Split(' ').Select(x => byte.Parse(x)).ToArray();
 
-            using (Stream stream = File.Open("data.bin", FileMode.Create, FileAccess.Write))
+            using (Stream stream = File.Open("data.bin", FileMode.OpenOrCreate, FileAccess.Write))
                 using (BinaryWriter bw = new BinaryWriter(stream))
                     bw.Write(array);
 
