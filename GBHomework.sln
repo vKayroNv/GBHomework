@@ -57,7 +57,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrequencyDictionary", "less
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lesson-6", "lesson-6", "{8D616A49-3E15-4BB5-B981-3DCB17D0C8C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task Manager", "lesson-6\Task Manager\Task Manager.csproj", "{50FDC040-BC64-48C2-B216-75B2ADA172FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task Manager", "lesson-6\Task Manager\Task Manager.csproj", "{50FDC040-BC64-48C2-B216-75B2ADA172FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lesson-7", "lesson-7", "{4C4E5EF1-AD9B-4CC9-A2DD-6B3BF49AA992}"
+	ProjectSection(SolutionItems) = preProject
+		lesson-7\1.png = lesson-7\1.png
+		lesson-7\2.png = lesson-7\2.png
+		lesson-7\3.png = lesson-7\3.png
+		lesson-7\4.png = lesson-7\4.png
+		lesson-7\5.png = lesson-7\5.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
